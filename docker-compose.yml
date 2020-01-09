@@ -1,0 +1,26 @@
+version: '3.4'
+
+# networks:
+#   state:
+
+services:
+  api-gateway:
+    # restart: always
+    # privileged: true
+    container_name: exchange-api-gateway
+    build: app
+    # volumes:
+    #   - ../../coins/btc/bitcoin.conf:/etc/nginx/bitcoin.conf
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - app/env.vars
+    environment:
+      - BINANCE_URL=https://www.google.com
+      - FTX_URL=https://www.dev.to
+    # logging:
+    #   driver: "json-file"
+    #   options:
+    #     max-size: "100m"
+
